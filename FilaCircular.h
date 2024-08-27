@@ -40,10 +40,94 @@ int numElementos(filaCircular<T,max> C){
 }
 
 template<typename T, int max>
-bool existeElem(filaCircular<T,max> fila) {
-    for(int i = fila.inicio;)
+bool existeElem(filaCircular<T,max> fila, T elem) {
+    if (!ehVazia(fila)) {
+        if(fila.inicio > fila.fim) {
+            for(int i = fila.inicio; i < fila.card; i++){
+                if(fila.elem[i] == elem) {
+                    return true;
+                }
+            }
+            for(int i = 0; i  < fila.fim; i++) {
+                if(fila.elem[i] == elem) {
+                    return true;
+                }
+            }
+            return false;
+        }else {
+            for(int i = fila.inicio; i < fila.fim; i++) {
+                if (fila.elem[i] == elem) {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+    }
 }
 
+template<typename T, int max>
+bool ehValida(filaCircular<T,max> fila, int pos) {
+    if(!verificaNumeroIntervalo(fila.inicio,fila.fim,pos) and pos > 0 and pos < max) {
+        return true;
+    }else {
+        return false;
+    }
+
+}
+
+bool verificaNumeroIntervalo(int x, int y, int valor) {
+    if(x > y) {
+        if (valor > y and valor < x) {
+            return true;
+        }
+        return false;
+    }
+    if(x < y) {
+        if (valor < y and valor > x) {
+            return true;
+        }
+        return false;
+    }
+}
+
+template<typename T, int max>
+T recuperaElem(filaCircular<T,max> fila) {
+    T aux = fila.elem[fila.inicio + 1];
+    fila.inicio--;
+    return aux;
+}
+
+template<typename T, int max>
+int recuperaPos() {
+    (filaCircular<T,max> fila, T elem) {
+        if (!ehVazia(fila)) {
+            if(fila.inicio > fila.fim) {
+                for(int i = fila.inicio; i < fila.card; i++){
+                    if(fila.elem[i] == elem) {
+                        return true;
+                    }
+                }
+                for(int i = 0; i  < fila.fim; i++) {
+                    if(fila.elem[i] == elem) {
+                        return true;
+                    }
+                }
+                return false;
+            }else {
+                for(int i = fila.inicio; i < fila.fim; i++) {
+                    if (fila.elem[i] == elem) {
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+
+        }
+    }
+}
 
 
 
