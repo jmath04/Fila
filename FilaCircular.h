@@ -40,7 +40,10 @@ int numElementos(filaCircular<T,max> C){
 }
 
 template<typename T, int max>
-bool
+bool existeElem(filaCircular<T,max> fila) {
+    for(int i = fila.inicio;)
+}
+
 
 
 
