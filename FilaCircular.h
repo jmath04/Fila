@@ -28,7 +28,7 @@ bool ehVazia(filaCircular<T,max> C){
 
 template<typename T, int max>
 bool verificaCheia(filaCircular<T,max> C){
-    if(C.card > max){
+    if(C.card < max){
         return false;
     }
     return true;
@@ -100,34 +100,41 @@ T recuperaElem(filaCircular<T,max> fila) {
 }
 
 template<typename T, int max>
-int recuperaPos() {
-    (filaCircular<T,max> fila, T elem) {
-        if (!ehVazia(fila)) {
-            if(fila.inicio > fila.fim) {
-                for(int i = fila.inicio; i < fila.card; i++){
-                    if(fila.elem[i] == elem) {
-                        return true;
-                    }
+int recuperaPos(filaCircular<T,max> fila, T elem) {
+    if (!ehVazia(fila)) {
+        if(fila.inicio > fila.fim) {
+            for(int i = fila.inicio; i < fila.card; i++){
+                if(fila.elem[i] == elem) {
+                    return true;
                 }
-                for(int i = 0; i  < fila.fim; i++) {
-                    if(fila.elem[i] == elem) {
-                        return true;
-                    }
-                }
-                return false;
-            }else {
-                for(int i = fila.inicio; i < fila.fim; i++) {
-                    if (fila.elem[i] == elem) {
-                        return true;
-                    }
-                }
-                return false;
-
             }
+            for(int i = 0; i  < fila.fim; i++) {
+                if(fila.elem[i] == elem) {
+                    return true;
+                }
+            }
+            return false;
+        }else {
+            for(int i = fila.inicio; i < fila.fim; i++) {
+                if (fila.elem[i] == elem) {
+                    return true;
+                }
+            }
+            return false;
 
         }
+
     }
 }
+
+template<typename T, int max>
+void mostraFila(filaCircular<T,max> Fila) {
+    if(!ehVazia(Fila)) {
+
+    }
+}
+
+
 
 
 
