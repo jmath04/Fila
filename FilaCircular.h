@@ -11,10 +11,10 @@ struct filaCircular{
 };
 
 template<typename T, int max>
-void cria(filaCircular <T,max> C){
+void cria(filaCircular <T,max> &C){
     C.card = 0;
-    C.inicio = 0;
-    C.fim = 0;
+    C.inicio = max - 1 ; // incia de max - 1 pois ao implementar as rotinas quando inserir um elemento nesta posiçao ele vai para 0
+    C.fim = max - 1;
 }
 
 template<typename T, int max>
@@ -55,6 +55,7 @@ bool existeElem(filaCircular<T,max> fila, T elem) {
         int i = 0;
         int pos = fila.inicio;
         while(i < fila.card){
+            i++;
             pos++;
             if(pos > max - 1) {
                 pos = 0;
@@ -77,7 +78,7 @@ bool ehValida(filaCircular<T,max> fila, int pos) {
 
 }
 
-bool verificaNumeroIntervalo(int x, int y, int valor) {
+inline bool verificaNumeroIntervalo(int x, int y, int valor) {
     if(x > y) {
         if (valor > y and valor < x) {
             return true;
@@ -97,9 +98,9 @@ bool verificaNumeroIntervalo(int x, int y, int valor) {
 }
 
 template<typename T, int max>
-T recuperaElem(filaCircular<T,max> fila) {
+T recuperaElem(filaCircular<T,max> &fila) {
     T aux = fila.elem[fila.inicio + 1];
-    fila.inicio--;
+    --fila.inicio;
     return aux;
 }
 
@@ -141,6 +142,24 @@ void mostraFila(filaCircular<T,max> Fila) {
         }
 
     }
+}
+
+template<typename T, int max>
+void insereFila (filaCircular<T,max> &fila, T elem) {
+    if(fila.card == max) {
+        throw "OVERFLOW";
+    }
+    ++fila.fim;
+    if(fila.fim > max) {
+        fila.fim = 0;
+    }
+    fila.elem[fila.fim] = elem;
+    ++fila.card;
+}
+
+template<typename T, int max>
+int retornaCard(filaCircular<T,max> fila) {
+    return fila.card;
 }
 
 
