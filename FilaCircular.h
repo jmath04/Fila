@@ -39,31 +39,31 @@ int numElementos(filaCircular<T,max> C){
     return C.card;
 }
 
+/* na rotina abaixo usam dois indices pois o i está relacionado com a cardinalidade, ou seja ele esta contado para
+ * rodar o looping com a quantidade de elemtos que existem a fila, e o posição é efetivamente a posição do elemento no
+ * vetor,
+ *
+ * o motivo disso é pois voce pode ter uma posiçao que é numericamente maior que a cardinalidade;
+ *
+ *
+ */
+
+
 template<typename T, int max>
 bool existeElem(filaCircular<T,max> fila, T elem) {
     if (!ehVazia(fila)) {
-        if(fila.inicio > fila.fim) {
-            for(int i = fila.inicio; i < fila.card; i++){
-                if(fila.elem[i] == elem) {
-                    return true;
-                }
+        int i = 0;
+        int pos = fila.inicio;
+        while(i < fila.card){
+            pos++;
+            if(pos > max - 1) {
+                pos = 0;
             }
-            for(int i = 0; i  < fila.fim; i++) {
-                if(fila.elem[i] == elem) {
-                    return true;
-                }
+            if(fila.elem[pos] == elem) {
+                return true;
             }
-            return false;
-        }else {
-            for(int i = fila.inicio; i < fila.fim; i++) {
-                if (fila.elem[i] == elem) {
-                    return true;
-                }
-            }
-            return false;
-
         }
-
+        return false;
     }
 }
 
@@ -90,6 +90,10 @@ bool verificaNumeroIntervalo(int x, int y, int valor) {
         }
         return false;
     }
+    if (y == x and valor == x) {
+        return true;
+    }
+    return false;
 }
 
 template<typename T, int max>
@@ -105,31 +109,36 @@ int recuperaPos(filaCircular<T,max> fila, T elem) {
         if(fila.inicio > fila.fim) {
             for(int i = fila.inicio; i < fila.card; i++){
                 if(fila.elem[i] == elem) {
-                    return true;
+                    return i;
                 }
             }
             for(int i = 0; i  < fila.fim; i++) {
                 if(fila.elem[i] == elem) {
-                    return true;
+                    return i;
                 }
             }
-            return false;
         }else {
             for(int i = fila.inicio; i < fila.fim; i++) {
                 if (fila.elem[i] == elem) {
-                    return true;
+                    return i;
                 }
             }
-            return false;
-
         }
-
     }
 }
 
 template<typename T, int max>
 void mostraFila(filaCircular<T,max> Fila) {
     if(!ehVazia(Fila)) {
+        int i = 0;
+        int pos = Fila.inicio;
+        while(i < Fila.card) {
+            pos++;
+            if (pos > max - 1) {
+                pos = 0;
+            }
+            cout << " [ " << Fila.elem[pos] << " ] " << endl;
+        }
 
     }
 }
