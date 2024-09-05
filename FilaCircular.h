@@ -19,19 +19,13 @@ void cria(filaCircular <T,max> &C){
 
 template<typename T, int max>
 bool ehVazia(filaCircular<T,max> C){
-    if(C.card == 0 ){
-        return true;
-    }
-    return false;
+    return C.card == 0;
 
 }
 
 template<typename T, int max>
 bool verificaCheia(filaCircular<T,max> C){
-    if(C.card < max){
-        return false;
-    }
-    return true;
+    return C.card == max;
 }
 
 template<typename T, int max>
@@ -100,7 +94,11 @@ inline bool verificaNumeroIntervalo(int x, int y, int valor) {
 template<typename T, int max>
 T recuperaElem(filaCircular<T,max> &fila) {
     T aux = fila.elem[fila.inicio + 1];
-    --fila.inicio;
+    ++fila.inicio;
+    --fila.card;
+    if(fila.inicio == max) {
+        fila.inicio = 0;
+    }
     return aux;
 }
 
@@ -139,6 +137,7 @@ void mostraFila(filaCircular<T,max> Fila) {
                 pos = 0;
             }
             cout << " [ " << Fila.elem[pos] << " ] " << endl;
+            i++;
         }
 
     }
@@ -150,7 +149,7 @@ void insereFila (filaCircular<T,max> &fila, T elem) {
         throw "OVERFLOW";
     }
     ++fila.fim;
-    if(fila.fim > max) {
+    if(fila.fim == max) {
         fila.fim = 0;
     }
     fila.elem[fila.fim] = elem;

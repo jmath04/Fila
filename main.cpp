@@ -10,8 +10,12 @@ int main() {
     cria(fila);
     int cont = 0;
     for(int i = 0; i < 12; i ++) {
-        insereFila(fila,1);
-        cont++;
+        try {
+            insereFila(fila,1);
+            cont++;
+        }catch(const char* msg) {
+            cout << msg << endl;
+        }
     }
 
     srand(time(NULL));
@@ -20,8 +24,13 @@ int main() {
         if(i % 60 == 0) {
             int x = rand() % 3 + 2;
             for(int j = 0; j < x; j++) {
-                insereFila(fila,1);
-                cont ++;
+                try {
+                    insereFila(fila,1);
+                    cont ++;
+                }catch(const char* msg){
+                    cout << msg << endl;
+                }
+
             }
             if(i % 30 == 0) {
                 recuperaElem(fila);
@@ -30,5 +39,5 @@ int main() {
     }
     cout << "Quantas pessoas vieram ver o filme: " << cont << endl;
     cout << "Quantas pessoas ainda estavam na fila: " <<  retornaCard(fila) << endl;
-    cout << "Quantas pessoas realmente viram o filme: " << retornaCard(fila) - cont << endl;
+    cout << "Quantas pessoas realmente viram o filme: " << cont - retornaCard(fila) << endl;
 }
