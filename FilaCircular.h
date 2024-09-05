@@ -161,6 +161,13 @@ int retornaCard(filaCircular<T,max> fila) {
     return fila.card;
 }
 
+template<typename T, int max>
+bool verificaElementosFila(filaCircular<T,max> fila1, filaCircular<T,max> fila2) {
+    if(fila1.inicio > fila2.inicio) {
+
+    }
+}
+
 
 
 

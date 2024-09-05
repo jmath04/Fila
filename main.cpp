@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    filaCircular<int,100> fila;
+    filaCircular<int,200> fila;
     cria(fila);
     int cont = 0;
     for(int i = 0; i < 12; i ++) {
