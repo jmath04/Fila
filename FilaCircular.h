@@ -163,9 +163,64 @@ int retornaCard(filaCircular<T,max> fila) {
 
 template<typename T, int max>
 bool verificaElementosFila(filaCircular<T,max> fila1, filaCircular<T,max> fila2) {
-    if(fila1.inicio > fila2.inicio) {
-
+    bool retorno;
+    int i = fila1.inicio;
+    int j = fila2.inicio;
+    int cont1 = 0;
+    int cont2 = 0;
+    if(fila1.card <= fila2.card) {
+        while(cont1 < fila1.card ) {
+            if(i >= max) {
+                i = 0;
+            }
+            retorno = false;
+            j = fila2.inicio;
+            cont2 = 0;
+            while(cont2 < fila2.card){
+                if(j >= max) {
+                    j = 0;
+                }
+                if(fila1.elem[i] == fila2.elem[j]) {
+                    retorno = true;
+                    break;
+                }
+                j++;
+                cont2++;
+            }
+            if(!retorno) {
+                return false;
+            }
+            cont1++;
+            i++;
+        }
     }
+    if(fila1.card > fila2.card) {
+        while(cont2 < fila2.card ) {
+            if(j >= max - 1) {
+                j = 0;
+            }
+            retorno = false;
+            i = fila1.inicio;
+            cont1 = 0;
+            while(cont1 < fila1.card){
+                if(i >= max - 1 ) {
+                    i = 0;
+                }
+                if(fila1.elem[i] == fila2.elem[j]) {
+                    retorno = true;
+                    break;
+                }
+                i++;
+                cont1++;
+            }
+            if(!retorno) {
+                return false;
+            }
+            j++;
+            cont2++;
+        }
+    }
+    return true;
 }
 
 

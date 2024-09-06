@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/exercicios estrutura de dados/Fila/ex1.cpp" "CMakeFiles/untitled.dir/ex1.cpp.obj" "gcc" "CMakeFiles/untitled.dir/ex1.cpp.obj.d"
   "D:/exercicios estrutura de dados/Fila/main.cpp" "CMakeFiles/untitled.dir/main.cpp.obj" "gcc" "CMakeFiles/untitled.dir/main.cpp.obj.d"
   )
 

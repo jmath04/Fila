@@ -128,6 +128,30 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+ex1.obj: ex1.cpp.obj
+.PHONY : ex1.obj
+
+# target to build an object file
+ex1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ex1.cpp.obj
+.PHONY : ex1.cpp.obj
+
+ex1.i: ex1.cpp.i
+.PHONY : ex1.i
+
+# target to preprocess a source file
+ex1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ex1.cpp.i
+.PHONY : ex1.cpp.i
+
+ex1.s: ex1.cpp.s
+.PHONY : ex1.s
+
+# target to generate assembly for a file
+ex1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ex1.cpp.s
+.PHONY : ex1.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... untitled
+	@echo ... ex1.obj
+	@echo ... ex1.i
+	@echo ... ex1.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
